@@ -15,7 +15,7 @@ class CreateBucketlistitemsTable extends Migration
     {
         Schema::create('bucketlistitems', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('bucketlist_id');
+            $table->integer('bucket_list_id');
             $table->string('name');
             $table->string('done')->default('False');
             $table->timestamps();

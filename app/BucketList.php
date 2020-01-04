@@ -8,4 +8,9 @@ class BucketList extends Model
 {
     //
     protected $table = 'bucketlists';
+
+    public function bucketlistitems()
+    {
+        return $this->hasMany('App\BucketListItem');
+    }
 }
