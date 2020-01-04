@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>window.Laravel = {"csrfToken":"{{ csrf_token() }}"}</script>
     <title>{{ ucwords(Route::currentRouteName()) }} | {{ config('app.desc', 'Laravel') }}</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <link href="{{ asset('assets') }}/css/bootstrap.css" rel="stylesheet" />
@@ -19,8 +20,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!--     Fonts and icons     -->
-    <link href='https://fonts.googleapis.com/css?family=Cambo|Lato:400,700' rel='stylesheet' type='text/css'>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('assets') }}/css/fonts/pe-icon-7-stroke.css" rel="stylesheet">
     <!--  Social tags      -->
 
@@ -28,8 +27,11 @@
     </head>
 
     <body>
-      @include('layouts.nav')
-    @yield('content')
+        @include('layouts.nav')
+
+        <main>
+            @yield('content')
+        </main>
 
 
     <footer class="footer footer-big footer-color-black" data-color="black">

@@ -1,8 +1,8 @@
-      @php $exclude_routes = ['register', 'login'];  @endphp
+      @php $exclude_routes = ['register', 'login', 'bucketlist'];  @endphp
       @if (in_array(Route::currentRouteName(), $exclude_routes))
-          <nav class="navbar navbar-default navbar-fixed-top">
+          <nav class="navbar navbar-inverse navbar-fixed-top">
       @else
-          <nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
+          <nav class="navbar navbar-primary navbar-transparent navbar-fixed-top" color-on-scroll="200">
       @endif
     
         <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
@@ -23,17 +23,14 @@
                     <li>
                         <a href="{{ route('index') }}">Home</a>
                     </li>
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-danger">
                             <li>
                                 <a href="blog-post.html">Blog post</a>
                             </li>
-                            <li>
-                                <a href="blog-posts.html">Blog Posts</a>
-                            </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     @guest
                     <li>
                         <a href="{{ route('register') }}">Register</a>
@@ -42,24 +39,22 @@
                         <a href="{{ route('login') }}">Login</a>
                     </li>
                      @else
-                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <span class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-danger">
-                            <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+                     <li>
+                        <a href="{{ route('bucketlist') }}">BucketList</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                            </li>
-                        </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
 
-                        @endguest
+                    @endguest
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

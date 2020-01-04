@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\BucketList;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use Illuminate\Http\Request;
 /* Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 }); */
+
+Route::middleware(['auth:api'])->prefix('bucketlist')->group(function () {
+    Route::get('bucketlists', 'BucketListController@index');
+    Route::get('/{id}', 'BucketListController@show');
+});

@@ -12,7 +12,18 @@
 */
 
 Route::get('/', 'PagesController@index')->name('index');
+Route::get('/bucketlists', 'PagesController@bucketlists')->name('bucketlist');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('login', 'UserController@login');
+Route::post('register', 'UserController@register');
+Route::post('logout', 'UserController@register')->name('logout');
+Route::group(['middleware' => 'auth:api'], function()
+{
+   Route::post('details', 'UserController@details');
+});
+
+Route::middleware(['web'])->group(function () {
+  // Route::get('/bucketlist/{id}', 'BucketListController@show');
+});

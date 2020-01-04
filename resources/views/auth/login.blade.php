@@ -36,11 +36,11 @@
                             <div class="separator separator-danger">✻</div>
                         </div>
 
-                        <label><h4 class="text-gray">Your email</h4></label>
+                        <label><h4 class="text-gray">Your username</h4></label>
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control form-control-plain @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="username" type="text" class="form-control form-control-plain @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                                @error('email')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
