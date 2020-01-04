@@ -141,7 +141,7 @@ class BucketListItemController extends ResponseController
      */
     public function destroy($id, $item_id)
     {
-        $bucketlist = BucketList::find($id);
+        $bucketlist = BucketList::find($id); 
         
         if(empty($bucketlist) || $bucketlist->created_by !== Auth::user()->id){
             $response['status-code'] = config('status-codes.Forbidden');
