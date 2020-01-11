@@ -10,16 +10,16 @@ class PagesController extends Controller
 
     public function __construct()
     {
-        
+
         // $this->middleware('auth');
-       
+
     }
 
     public function index() {
         return view('pages.index');
     }
 
-    public function bucketlists(){
+    public function home(){
         return view('bucketlist.index');
     }
 }

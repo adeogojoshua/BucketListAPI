@@ -27,10 +27,10 @@
     </head>
 
     <body>
-        @include('layouts.nav')
+        {{-- @include('layouts.nav') --}}
 
-        <main>
-            @yield('content')
+        <main id="app">
+            {{-- @yield('content') --}}
         </main>
 
 

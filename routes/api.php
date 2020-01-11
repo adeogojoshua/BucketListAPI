@@ -18,7 +18,7 @@ use App\BucketList;
     return $request->user();
 }); */
 
-Route::group([ 'prefix' => 'auth'], function (){ 
+Route::group([ 'prefix' => 'auth'], function (){
     Route::group(['middleware' => ['guest:api']], function () {
         Route::post('login', 'API\AuthController@login');
         Route::post('register', 'API\AuthController@register');
@@ -27,7 +27,7 @@ Route::group([ 'prefix' => 'auth'], function (){
         Route::get('logout', 'API\AuthController@logout');
         Route::get('getuser', 'API\AuthController@getUser');
     });
-}); 
+});
 
 Route::middleware(['auth:api'])->prefix('bucketlists')->group(function () {
     Route::get('/', 'BucketListController@index'); // all bucketlists
@@ -35,7 +35,7 @@ Route::middleware(['auth:api'])->prefix('bucketlists')->group(function () {
     Route::get('/{id}', 'BucketListController@show'); // single bucketlist
     Route::put('/{id}', 'BucketListController@update'); // edit bucketlist
     Route::delete('/{id}', 'BucketListController@delete'); // delete bucketlist
-    
+
     // BucketList Items
     Route::post('/{id}/items', 'BucketListItemController@store'); // create a new item in bucket list
     Route::get('/{id}/items', 'BucketListItemController@show'); // List all the created items in a bucket list

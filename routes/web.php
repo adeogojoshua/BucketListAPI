@@ -12,12 +12,12 @@
 */
 
 Route::get('/', 'PagesController@index')->name('index');
-Route::get('/bucketlists', 'PagesController@bucketlists')->name('bucketlist');
+Route::get('/home', 'PagesController@home')->name('home');
 
 Auth::routes();
 
 
 
-Route::middleware(['web'])->group(function () {
+Route::middleware(['auth:api'])->group(function () {
   // Route::get('/bucketlist/{id}', 'BucketListController@show');
 });

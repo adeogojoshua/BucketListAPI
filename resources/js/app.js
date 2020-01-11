@@ -3,6 +3,12 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import VueRouter from 'vue-router';
+import App from './App.vue';
+import Home from './components/HomeComponent.vue';
+import Index from './components/IndexComponent.vue';
+import store from './store';
+
 
 require('./bootstrap');
 
@@ -18,23 +24,26 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+Vue.use(VueRouter);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('bucketlist-component', require('./components/BucketListComponent.vue').default);
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue').default
-);
 
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue').default
-);
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+    {
+        path: '/',
+        name: 'index',
+        component: Index
+    },{
+        path: '/home',
+        name: 'home',
+        component: Home,
+    }
 
-Vue.component( 
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue').default
-);
+    ]
+});
 
 
 /**
@@ -44,5 +53,8 @@ Vue.component(
  */
 
 const app = new Vue({
-    el: '#app',
-});
+    // el: '#app',
+    router,
+    store,
+    render: h => h(App)
+}).$mount('#app');

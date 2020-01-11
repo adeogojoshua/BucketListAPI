@@ -1,8 +1,6 @@
-@extends('layouts.custom')
-
-@section('content')
-
-    <div class="section section-signin">
+<template>
+    <div>
+        <div class="section section-signin">
 
             <div class="image-container">
                 <div class="filter filter-color-black"  style="background-image: url('../assets/img/header-9.jpeg')">
@@ -78,4 +76,16 @@
                 {{-- </form> --}}
             </div>
     </div>
-@endsection
+    </div>
+</template>
+
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>

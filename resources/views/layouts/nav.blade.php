@@ -1,10 +1,10 @@
       @php $exclude_routes = ['register', 'login', 'bucketlist'];  @endphp
-      @if (in_array(Route::currentRouteName(), $exclude_routes))
+      @if ((Route::currentRouteName() !== 'index'))
           <nav class="navbar navbar-inverse navbar-fixed-top">
       @else
           <nav class="navbar navbar-primary navbar-transparent navbar-fixed-top" color-on-scroll="200">
       @endif
-    
+
         <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
         <div class="container">
             <div class="navbar-header">
@@ -20,9 +20,7 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right navbar-uppercase">
-                    <li>
-                        <a href="{{ route('index') }}">Home</a>
-                    </li>
+
                     {{-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-danger">
@@ -33,14 +31,15 @@
                     </li> --}}
                     @guest
                     <li>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('register') }}">Register</a>bvrbr
+                        <router-link :to="{ name: 'user', params: { userId: 123 }}">User rgrg</router-link>
                     </li>
                     <li>
                         <a href="{{ route('login') }}">Login</a>
                     </li>
-                     @else
-                     <li>
-                        <a href="{{ route('bucketlist') }}">BucketList</a>
+                    @else
+                    <li>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"
