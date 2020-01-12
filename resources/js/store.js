@@ -6,7 +6,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        BASE_URL: "ewgwrgrgrgrg",
+        BASE_URL: "http://bucketlist.api/",
+        isLoggedIn: !!localStorage.getItem('token'),
+        token: localStorage.getItem('token'),
+        darkNav: false
+    },
+    getters: {
+        base_url: state => state.BASE_URL,
+        isLoggedIn: state => state.isLoggedIn,
+        darkNav: state => state.darkNav
     },
     mutations: {
         LoginUser (state, data) {

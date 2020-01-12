@@ -30,11 +30,10 @@
         {{-- @include('layouts.nav') --}}
 
         <main id="app">
-            {{-- @yield('content') --}}
         </main>
 
 
-    <footer class="footer footer-big footer-color-black" data-color="black">
+    {{-- <footer class="footer footer-big footer-color-black" data-color="black">
         <div class="container">
             <div class="row">
                 <div class="col-md-2 col-sm-3">
@@ -139,7 +138,7 @@
                  © <script> document.write(new Date().getFullYear()) </script> Creative Tim, made with love
             </div>
         </div>
-    </footer>
+    </footer> --}}
 
 </body>
 

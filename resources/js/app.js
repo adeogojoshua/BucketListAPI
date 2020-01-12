@@ -5,8 +5,10 @@
  */
 import VueRouter from 'vue-router';
 import App from './App.vue';
-import Home from './components/HomeComponent.vue';
 import Index from './components/IndexComponent.vue';
+import Register from './components/auth/RegisterComponent.vue';
+import Login from './components/auth/LoginComponent.vue';
+import Home from './components/HomeComponent.vue';
 import store from './store';
 
 
@@ -14,21 +16,12 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-Vue.use(VueRouter);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('bucketlist-component', require('./components/BucketListComponent.vue').default);
 
+Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
     routes: [
@@ -40,11 +33,50 @@ const router = new VueRouter({
         path: '/home',
         name: 'home',
         component: Home,
+        meta: {
+            requiresAuth: true
+        }
+    },{
+        path: '/login',
+        name: 'login',
+        component: Login,
+        meta: {
+            auth: false
+        }
+    },{
+        path: '/register',
+        name: 'register',
+        component: Register,
+        meta: {
+            auth: false
+        }
     }
 
     ]
 });
 
+
+router.beforeEach((to, from, next) => {
+
+    // check if the route requires authentication and user is not logged in
+    if (to.matched.some(route => route.meta.requiresAuth) && !store.state.isLoggedIn) {
+        // redirect to login page
+        next({ name: 'login' })
+        return
+    }
+
+    // if logged in redirect to dashboard
+    if(to.path === '/login' && store.state.isLoggedIn) {
+        next({ name: 'home' })
+        return
+    }
+
+    if(to.path === '/'){
+        store.state.darkNav = true;
+    }
+
+    next()
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -53,8 +85,8 @@ const router = new VueRouter({
  */
 
 const app = new Vue({
-    // el: '#app',
+    el: '#app',
     router,
     store,
     render: h => h(App)
-}).$mount('#app');
+})
