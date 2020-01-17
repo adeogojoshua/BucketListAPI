@@ -20,7 +20,7 @@ use App\BucketList;
 
 Route::group([ 'prefix' => 'auth'], function (){
     Route::group(['middleware' => ['guest:api']], function () {
-        Route::post('login', 'API\AuthController@login');
+        Route::post('login', 'API\AuthController@login')->name('api_auth_login');
         Route::post('register', 'API\AuthController@register');
     });
     Route::group(['middleware' => 'auth:api'], function() {
