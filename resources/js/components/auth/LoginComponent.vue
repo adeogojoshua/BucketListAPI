@@ -54,7 +54,7 @@
                             </button>
                             <br/><br/>
                             <a class="btn btn-danger btn-round " href="#">
-                                Forgot Your Password?
+                                Forgot Password?
                             </a>
                             <p class="text-gray info">Don't have an account? <router-link :to="{ name: 'register' }">Register</router-link></p>
                         </div>
@@ -78,12 +78,14 @@ methods: {
     login(){
         let username = this.username, password = this.password;
         if(username != '' && password != ''){
-            fetch(url, params)
+            fetch(url, {
+                method: 'POST',
+            })
             .then(res => res.json())
             .then(response => {
                 console.log(response)
             }).catch(err => console.log(err));
-            
+
         }else{
             alert('Empty Field(s)')
         }

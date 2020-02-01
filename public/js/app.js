@@ -1921,6 +1921,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
@@ -1932,6 +1936,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     isLoggedIn: function isLoggedIn() {
       return _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].getters.isLoggedIn;
+    },
+    currentRoute: {
+      get: function get() {
+        console.log(this.$route.name);
+      }
     }
   }
 });
@@ -2176,7 +2185,9 @@ __webpack_require__.r(__webpack_exports__);
           password = this.password;
 
       if (username != '' && password != '') {
-        fetch(url, params).then(function (res) {
+        fetch(url, {
+          method: 'POST'
+        }).then(function (res) {
           return res.json();
         }).then(function (response) {
           console.log(response);
@@ -37661,8 +37672,12 @@ var render = function() {
       _c(
         "nav",
         {
-          staticClass:
-            "navbar navbar-primary navbar-transparent navbar-fixed-top",
+          staticClass: "navbar navbar-fixed-top",
+          class: {
+            currentRoute: "index"
+              ? "navbar-primary navbar-transparent"
+              : undefined
+          },
           attrs: { "color-on-scroll": "200" }
         },
         [
@@ -37701,7 +37716,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [_vm._v("Register")]
+                            [_vm._v(_vm._s(_vm.currentRoute) + " Register")]
                           )
                         ],
                         1
@@ -38242,7 +38257,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            Forgot Your Password?\n                        "
+                        "\n                            Forgot Password?\n                        "
                       )
                     ]
                   ),

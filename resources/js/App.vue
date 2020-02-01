@@ -2,7 +2,11 @@
     <div>
 
 <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
-<nav class="navbar navbar-primary navbar-transparent navbar-fixed-top" color-on-scroll="200">
+<!-- <nav class="navbar navbar-fixed-top navbar-primary navbar-transparent " color-on-scroll="200"> -->
+    <nav class="navbar navbar-fixed-top"
+    :class="{currentRoute: 'index' ? 'navbar-primary navbar-transparent' : 'navbar-inverse'}"
+
+    color-on-scroll="200">
         <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
         <div class="container">
             <div class="navbar-header">
@@ -21,7 +25,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right navbar-uppercase">
                     <li v-if="!isLoggedIn">
-                        <router-link :to="{ name: 'register', params: { userId: 123 } }">Register</router-link>
+                        <router-link :to="{ name: 'register', params: { userId: 123 } }">{{ currentRoute}} Register</router-link>
                     </li>
                     <li v-if="!isLoggedIn">
                         <router-link :to="{ name: 'login' }">Login</router-link>
@@ -85,11 +89,18 @@ import store from "./store.js";
 
 export default {
 computed: {
-        base_url: () => store.getters.base_url,
-        img: () => store.getters.base_url + '/img/favicon.png',
-        isLoggedIn: () => store.getters.isLoggedIn,
-    }
+            base_url: () => store.getters.base_url,
+            img: () => store.getters.base_url + '/img/favicon.png',
+            isLoggedIn: () => store.getters.isLoggedIn,
+            currentRoute:{
+                get(){
+                    console.log(this.$route.name);
+                }
+            }
+    },
+
 }
+
 
 </script>
 
