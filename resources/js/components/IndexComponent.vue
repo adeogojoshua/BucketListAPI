@@ -10,7 +10,7 @@
                         <div class="separator-container">
                             <div class="separator line-separator">♦</div>
                         </div>
-                        <h5>Present your company, clients and projects in a stylish way</h5>
+                        <h5>Track your BucketLists</h5>
                     </div>
                 </div>
             </div>
