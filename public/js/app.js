@@ -1924,9 +1924,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
+=======
+>>>>>>> 580c1e92cc991cc26903b2db80a463458156c9e1
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      indexClass: "navbar navbar-primary navbar-transparent navbar-fixed-top",
+      otherCLass: ""
+    };
+  },
   computed: {
     base_url: function base_url() {
       return _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].getters.base_url;
@@ -1937,11 +1946,27 @@ __webpack_require__.r(__webpack_exports__);
     isLoggedIn: function isLoggedIn() {
       return _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].getters.isLoggedIn;
     },
+<<<<<<< HEAD
     currentRoute: {
       get: function get() {
         console.log(this.$route.name);
       }
+=======
+    routeName: function routeName() {
+      return this.$route.name;
+>>>>>>> 580c1e92cc991cc26903b2db80a463458156c9e1
     }
+  },
+  created: function created() {// this.setClass();
+  },
+  methods: {
+    /* setClass(route_name){
+        if(route_name == 'index'){
+            this.indexClass = "navbar navbar-primary navbar-transparent navbar-fixed-top";
+        }else{
+            indexClass = "navbar navbar-inverse navbar-fixed-top";
+        }
+    } */
   }
 });
 
@@ -2104,6 +2129,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store.js */ "./resources/js/store.js");
 //
 //
 //
@@ -2172,6 +2198,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+var base_url = _store_js__WEBPACK_IMPORTED_MODULE_0__["default"].getters.base_url;
+var login_url = '';
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2200,6 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+console.log(base_url);
 
 /***/ }),
 
@@ -37671,6 +37701,7 @@ var render = function() {
     [
       _c(
         "nav",
+<<<<<<< HEAD
         {
           staticClass: "navbar navbar-fixed-top",
           class: {
@@ -37680,6 +37711,9 @@ var render = function() {
           },
           attrs: { "color-on-scroll": "200" }
         },
+=======
+        { class: _vm.indexClass, attrs: { "color-on-scroll": "200" } },
+>>>>>>> 580c1e92cc991cc26903b2db80a463458156c9e1
         [
           _c("div", { staticClass: "container" }, [
             _c(
@@ -37716,7 +37750,11 @@ var render = function() {
                                 }
                               }
                             },
+<<<<<<< HEAD
                             [_vm._v(_vm._s(_vm.currentRoute) + " Register")]
+=======
+                            [_vm._v(_vm._s(_vm.$route.name) + "Register")]
+>>>>>>> 580c1e92cc991cc26903b2db80a463458156c9e1
                           )
                         ],
                         1
@@ -38186,8 +38224,7 @@ var render = function() {
                       type: "text",
                       name: "username",
                       value: "",
-                      required: "",
-                      autocomplete: "username",
+                      autocomplete: "off",
                       autofocus: ""
                     },
                     domProps: { value: _vm.username },
@@ -38220,8 +38257,7 @@ var render = function() {
                       id: "password",
                       type: "password",
                       name: "password",
-                      required: "",
-                      autocomplete: "current-password"
+                      autocomplete: "off"
                     },
                     domProps: { value: _vm.password },
                     on: {
@@ -55234,8 +55270,8 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Adeogo\Desktop\GitHub\BucketListAPI\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Adeogo\Desktop\GitHub\BucketListAPI\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\webmaster\Desktop\Adeogo\BucketListAPI\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\webmaster\Desktop\Adeogo\BucketListAPI\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

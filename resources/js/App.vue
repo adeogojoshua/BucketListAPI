@@ -88,6 +88,12 @@
 import store from "./store.js";
 
 export default {
+data() {
+    return{
+        indexClass: "navbar navbar-primary navbar-transparent navbar-fixed-top",
+        otherCLass: "",
+    }
+},
 computed: {
             base_url: () => store.getters.base_url,
             img: () => store.getters.base_url + '/img/favicon.png',

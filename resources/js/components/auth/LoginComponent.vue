@@ -35,12 +35,12 @@
 
                         <label><h4 class="text-gray">Your username</h4></label>
                         <div class="form-group">
-                            <input id="username" v-model="username" type="text" class="form-control form-control-plain @error('username') is-invalid @enderror" name="username" value="" required autocomplete="username" autofocus>
+                            <input id="username" v-model="username" type="text" class="form-control form-control-plain @error('username') is-invalid @enderror" name="username" value="" autocomplete="off" autofocus>
                         </div>
 
                         <label><h4 class="text-gray">Your password</h4></label>
                         <div class="form-group">
-                            <input id="password" v-model="password" type="password" class="form-control form-control-plain @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" >
+                            <input id="password" v-model="password" type="password" class="form-control form-control-plain @error('password') is-invalid @enderror" name="password" autocomplete="off" >
                         </div>
 
                         <!-- <div class="form-group">
@@ -67,6 +67,10 @@
 
 
 <script>
+import store from "../../store.js";
+
+let base_url = store.getters.base_url;
+let login_url = '';
 export default {
 data() {
     return {
@@ -93,6 +97,8 @@ methods: {
 }
 
 }
+
+console.log(base_url);
 </script>
 
 <style>
